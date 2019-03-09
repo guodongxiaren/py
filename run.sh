@@ -1,2 +1,2 @@
 #!/bin/bash
-python zhihu.py >> data.txt
+python zhihu.py >> data.csv
