@@ -3,6 +3,7 @@
 import time
 import threading
 import multiprocessing
+import os
 import requests
 import sys
 import wget
@@ -16,7 +17,7 @@ class M3U8(object):
         self.ts_list = []
         self.ts_dict = {}
         self.q = Queue()
-        self.faild_list = []
+        self.failed_list = []
 
     def get_ts_list(self, url):
         """
@@ -108,14 +109,17 @@ class M3U8(object):
 
 
 def main(*args):
-    print(args)
     url = args[0]
+    tmp_dir = url.split('/')[-2]
+    print(url, tmp_dir)
+    tmp_path = f'tmp/{tmp_dir}'
+    os.makedirs(tmp_path)
     m = M3U8()
     m.get_ts_list(url)
     m.build_ts_index()
     start = time.time()
-    m.download_parallel('tmp')
-    m.retry_failed_ts('tmp')
+    m.download_parallel(tmp_path)
+    m.retry_failed_ts(tmp_path)
     end = time.time()
     print('end - start', end - start)
 
