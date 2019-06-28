@@ -62,7 +62,6 @@ def main():
         if market == 'hk':
             value = value * Decimal(0.128)
         value = value.quantize(Decimal('0.00'))
-        value = float(value)
         value_dict[value] = name
         value_list.append(value)
 
