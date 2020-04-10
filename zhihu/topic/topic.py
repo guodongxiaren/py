@@ -54,18 +54,21 @@ def get_sub_topic(main_topic_id, size=20):
                 if href == 'javascript:;':
                     continue
                 name = a.text.strip()
-                topic_list[href] = name
+                topic_id = href[len('/topic/'):]
+                topic_list[topic_id] = name
         if len(html_list) < size:
             break;
     return topic_list
 
-def get_all_topic_list():
-    main_topic = get_main_topic()
-    all_topic_list = []
+def get_all_topic_list(main_topic=None):
+    if main_topic is None:
+        main_topic = get_main_topic()
+    all_topic_list = {}
     for main_topic_id, main_topic_name in main_topic.items():
         topic_list = get_sub_topic(main_topic_id)
-        all_topic_list.extend(topic_list)
-        time.sleep(1)
+        #all_topic_list[main_topic_id] = topic_list
+        all_topic_list[main_topic_name] = topic_list
+        #time.sleep(1)
         print('%s done:has %d sub topic' % (main_topic_name, len(topic_list)))
     return all_topic_list
 
@@ -89,7 +92,15 @@ def get_topic_top_writer(topic_href):
 
 if __name__ == '__main__':
     #topic_list = get_sub_topic(1761) # for test
-    #all_topic_list = get_all_topic_list()
-    top = get_topic_top_writer('/topic/19584970')
-    print(top)
-
+    #top = get_topic_top_writer('/topic/19584970')
+    #print(top)
+    main_topic = get_main_topic()
+    all_topic = get_all_topic_list(main_topic)
+    json.dump(all_topic, open('topic.json', 'w'), ensure_ascii=False, indent=4)
+    """
+    for main_topic_id, main_topic_name in main_topic.items():
+        print("%s\t%d" % (main_topic_name, main_topic_id))
+        sub_topic = all_topic_list[main_topic_id]
+        for id, name in sub_topic.items():
+            print(id,name)
+    """
