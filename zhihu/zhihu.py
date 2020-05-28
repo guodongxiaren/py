@@ -4,7 +4,7 @@ import datetime
 import urllib
 from bs4 import BeautifulSoup
 
-url = 'https://www.zhihu.com/people/guodongxiaren/activities'
+url = 'https://www.zhihu.com/people/guodongxiaren'
 origin_bytes = urllib.urlopen(url).read()
 origin_string = origin_bytes.decode('utf-8')
 soup = BeautifulSoup(origin_string, 'html.parser')
