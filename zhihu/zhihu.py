@@ -4,9 +4,10 @@ import datetime
 import urllib
 from bs4 import BeautifulSoup
 
-url = 'https://www.zhihu.com/people/guodongxiaren'
+url = 'https://www.zhihu.com/people/guodongxiaren/'
 origin_bytes = urllib.urlopen(url).read()
 origin_string = origin_bytes.decode('utf-8')
+print(origin_string)
 soup = BeautifulSoup(origin_string, 'html.parser')
 
 meta_list = soup.find_all('meta')
