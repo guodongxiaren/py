@@ -10,7 +10,11 @@ header = {
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive',
 }
+proxies = {
+    'https': '163.204.244.184:9999'
+}
 url = 'https://www.zhihu.com/api/v4/members/guodongxiaren?include=follower_count%2cvoteup_count'
+#resp = requests.get(url, headers=header, proxies=proxies)
 resp = requests.get(url, headers=header)
 data = resp.json()
 voteupCount = data['voteup_count']
