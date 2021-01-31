@@ -5,7 +5,7 @@
     <div id='graphviz_svg_div'>
     <script>
         var svg_div = jQuery('#graphviz_svg_div');
-        var str = '{\"G\":\"digraph G { Welcome -> To To -> Web To -> GraphViz  }\"}';
+var str = '{\"G\":\"digraph G { Welcome -> To To -> Web To -> GraphViz  }\", \"GG\":\"digraph G { Welcome -> To To -> Web To -> GraphViz   }\"}';
         var obj = JSON.parse(str);
         var graph = '';
         for (var key in obj) {
