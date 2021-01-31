@@ -1,0 +1,23 @@
+<html>
+    <body>
+    <script src='http://www.webgraphviz.com/viz.js'></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+    <div id="graphviz_svg_div">
+    <script>
+        var svg_div = jQuery('#graphviz_svg_div');
+        var str = '{\"G\":\"digraph G { Welcome -> To To -> Web To -> GraphViz  }\"}';
+        var obj = JSON.parse(str);
+        var graph = "";
+        for (var key in obj) {
+            var topo = obj[key];
+            var svg = Viz(topo, "svg");
+            graph += "<h1>" + key +"</h1>" + svg + "<hr>";
+        }
+        svg_div.html(graph);
+        //var a = JSON.stringify(o);
+        //console.log(a);
+        //console.log(topo);
+    </script>
+
+    </body>
+</html>
