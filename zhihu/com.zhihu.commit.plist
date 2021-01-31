@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Label唯一的标识 -->
+    <key>Label</key>
+    <string>com.zhihu.commit</string>
+    <!-- 指定要运行的脚本 -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/jelly/test/py/zhihu/commit.sh</string>
+    </array>
+    <!-- 指定运行的时间 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Minute</key>
+        <integer>35</integer>
+        <key>Hour</key>
+        <integer>0</integer>
+    </dict>
+</dict>
+</plist>
+
