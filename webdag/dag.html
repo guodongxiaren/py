@@ -1,0 +1,15 @@
+<html>
+    <body>
+    <script src='http://www.webgraphviz.com/viz.js'></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+    <div id="graphviz_svg_div">
+    <script>
+        var svg_div = jQuery('#graphviz_svg_div');
+        var topo = 'digraph G { "Welcome" -> "To" "To" -> "Web" "To" -> "GraphViz!" }';
+console.log(topo);
+    var svg = Viz(topo, "svg");
+    svg_div.html("<hr>"+svg);
+    </script>
+
+    </body>
+</html>
