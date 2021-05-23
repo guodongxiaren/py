@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 import json
+import os
 import urllib.request as request
 
 # {"sysTime2":"2021-05-23 23:27:25","sysTime1":"20210523232725"}
@@ -12,6 +13,7 @@ def set_time():
     now_time = obj['sysTime2'];
     cmd = 'date -s "%s"' % (now_time)
     print(cmd)
+    os.popen(cmd);
 
 if __name__ == '__main__':
     set_time()
