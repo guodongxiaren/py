@@ -3,9 +3,8 @@
 name: Python application
 
 on:
-  push:
   schedule:
-    - cron: '35 15 * * *'
+    - cron: '0 15 * * *'
 
 jobs:
   build:
@@ -32,7 +31,8 @@ jobs:
         git config --global user.email guodongxiaren@163.com
         git config --global user.name guodongxiaren
         git add .
-        git commit -m"action:`date +'%Y-%m-%d'`"
+        #git commit -m"action:`date +'%Y-%m-%d'`"
+        git commit -m"action:`date`"
         git pull --rebase
     - name: Push changes
       uses: ad-m/github-push-action@master
