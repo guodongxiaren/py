@@ -20,4 +20,4 @@ for meta in meta_list:
             followerCount = meta.get('content')
 
 date = datetime.datetime.now().strftime('%Y-%m-%d')
-print '%s,%s,%s' % (date, voteupCount, followerCount)
+print('%s,%s,%s' % (date, voteupCount, followerCount))
