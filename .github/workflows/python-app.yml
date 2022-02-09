@@ -26,6 +26,10 @@ jobs:
       run: |
         cd zhihu
         sh run.sh
+    - name: Update bilibili
+      run: |
+        cd bilibili
+        sh run.sh
     - name: Commit
       run: |
         git config --global user.email guodongxiaren@163.com
