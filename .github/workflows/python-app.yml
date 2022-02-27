@@ -22,14 +22,22 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
         #if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        #
     - name: Update zhihu
       run: |
         cd zhihu
         sh run.sh
-    - name: Update bilibili
+
+    - name: Update lanpang on bilibili
       run: |
-        cd bilibili
+        cd bilibili/lanpang
         sh run.sh
+
+    - name: Update guodong on bilibili
+      run: |
+        cd bilibili/guodong
+        sh run.sh
+
     - name: Commit
       run: |
         git config --global user.email guodongxiaren@163.com
@@ -38,6 +46,7 @@ jobs:
         #git commit -m"action:`date +'%Y-%m-%d'`"
         git commit -m"action:`date`"
         git pull --rebase
+
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
