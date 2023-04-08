@@ -1,20 +1,17 @@
-var downloadInfo = null;
-
-// 监听来自内容脚本的消息
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  if (message.action === 'download') {
-    // 保存下载信息，等待用户点击下载按钮后执行下载操作
-    downloadInfo = message;
-  }
-});
-
-// 监听用户点击插件按钮的事件
-chrome.action.onClicked.addListener(function(tab) {
-  if (downloadInfo) {
-    // 下载图片
-    chrome.downloads.download({ url: downloadInfo.cdn_url, filename: downloadInfo.title + '.jpg' });
-
-    // 清空下载信息，避免重复下载
-    downloadInfo = null;
-  }
-});
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Download Public Account Cover</title>
+    <style>
+      button {
+        font-size: 16px;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="download-button">Download Public Account Cover</button>
+    <script src="popup.js"></script>
+  </body>
+</html>
