@@ -16,7 +16,12 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
         # 更新 hosts 文件
         if domain and ip:
-            with open(HOSTS_FILE, 'a') as f:
+            with open(HOSTS_FILE, 'r') as f:
+                lines = f.readlines()
+            with open(HOSTS_FILE, 'w') as f:
+                for line in lines:
+                    if not line.startswith(ip + ' ' + domain):
+                        f.write(line)
                 f.write(ip + ' ' + domain + '\n')
 
         # 返回响应
